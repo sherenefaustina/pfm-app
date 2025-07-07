@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fade-in animation utility */
+@layer utilities {
+  .animate-fadeInUp {
+    animation: fadeInUp 1s ease-out both;
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .scrolling-ticker span {
+    padding-inline: 2rem;
+    white-space: nowrap;
+  }
+}
+
+/* Horizontal scroll animation */
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 40s linear infinite;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Envelope outer box */
+.envelope {
+  position: relative;
+  width: 100%;
+  padding-bottom: 75%;
+  background: linear-gradient(to right, rgba(153, 51, 255, 0.9), rgba(255, 0, 255, 0.9)) !important;
+
+  border: 1px solid #e5d4f5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Diagonal flap */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6rem;
+  background-color: #d8c4ff;
+  border-top-right-radius: 100%;
+  transform-origin: top;
+  z-index: 20;
+  transition: transform 0.5s ease-in-out;
+}
+
+.group:hover .envelope-flap {
+  transform: rotate(-45deg);
+}
+
+/* Feature card that slides out */
+.envelope-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: all 0.7s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  z-index: 30;
+}
+
+.group:hover .envelope-card {
+  opacity: 1;
+  transform: translate(-50%, -8rem);
+}
+
+/* Allow card interaction only on hover */
+.feature-card {
+  pointer-events: none;
+}
+
+.group:hover .feature-card {
+  pointer-events: auto;
+}
+
+/* Glowing effect for feature name */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 3px #d0bfff, 0 0 8px #c49fff;
+  }
+  50% {
+    text-shadow: 0 0 6px #c6a6ff, 0 0 16px #b17fff;
+  }
+  100% {
+    text-shadow: 0 0 3px #d0bfff, 0 0 8px #c49fff;
+  }
+}
+
+.animate-glow {
+  animation: glow 2s infinite;
+}
+
+.custom-alert {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideFadeIn 0.8s ease;
+}
+
+.alert-icon {
+  font-size: 1.5rem;
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-alert {
+  transition: all 0.3s ease-in-out;
+}
+
+.animate-alert {
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
